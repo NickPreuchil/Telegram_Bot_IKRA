@@ -1,0 +1,15 @@
+[Unit]
+Description=IKRA Random frame generator 2.0
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/environment
+ExecStart=/home/IKRABot/venv/bin/python main.py
+ExecReload=/home/IKRABot/venv/bin/python main.py
+WorkingDirectory=/home/IKRABot/
+KillMode=process
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

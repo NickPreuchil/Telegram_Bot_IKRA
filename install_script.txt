@@ -1,0 +1,19 @@
+#!/bin/bash
+
+sudo apt update
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+git clone https://github.com/NickPreuchil/Telegram_Bot_IKRA.git IKRABot
+cd /usr/local/lib/Python-3.8.5
+./configure --enable-optimizations
+make
+sudo make altinstall
+cd /home
+
+python3.8 -m pip install --upgrade pip
+pip install virtualenv
+cd IKRABot
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+deactivate
+mv IKRABot.service /lib/systemd/system/
